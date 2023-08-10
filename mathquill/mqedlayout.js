@@ -2,6 +2,7 @@
   This object contains the layouts we'll be using. These are exposed by the
   getLayoutstyle and getLayout functions it returns.
   We'll pass those functions to the MQeditor in the config.
+  Edited by Jeffrey S Meyer - Fall 2023 - To include extra linear algebra specific layouts.
  */
 var myMQeditor = (function($) {
   var mobileLayout3 = {
@@ -149,16 +150,43 @@ var myMQeditor = (function($) {
         ]
       },
       {
+        p:'Vector',
+        sm: 1,
+        enabled: false,
+        tabcontent: [
+          {
+            flow: 'row',
+            s: 6,
+            contents: [
+              {p:'List-length:', c:' ', w:' '},
+              {p:'2', c:'w', w:'\\begin{bmatrix} \\\\ \\end{bmatrix}'},		
+              {p:'3', c:'w', w:'\\begin{bmatrix} \\\\ \\\\ \\end{bmatrix}'},
+              {p:'4', c:'w', w:'\\begin{bmatrix} \\\\ \\\\ \\\\ \\end{bmatrix}'},
+              {p:'5', c:'w', w:'\\begin{bmatrix} \\\\ \\\\ \\\\ \\\\ \\end{bmatrix}'},
+              {p:'6', c:'w', w:'\\begin{bmatrix} \\\\ \\\\ \\\\ \\\\ \\\\ \\end{bmatrix}'},
+              {p:'+1 to list-length', c:'m', w:'addRow'},
+              {p:'-1 from list-length', c:'m', w:'deleteRow'}
+            ]
+          }
+        ]
+      },
+      {
         p:'Matrix',
         sm: 1,
         enabled: false,
         tabcontent: [
           {
             flow: 'row',
-            s: 4,
+            s: 5,
             contents: [
+	      {p:'2×1', c:'w', w:'\\begin{bmatrix} \\\\ \\end{bmatrix}'},		
+              {p:'3×1', c:'w', w:'\\begin{bmatrix} \\\\ \\\\ \\end{bmatrix}'},
+              {p:'4×1', c:'w', w:'\\begin{bmatrix} \\\\ \\\\ \\\\ \\end{bmatrix}'},
+              {p:'5×1', c:'w', w:'\\begin{bmatrix} \\\\ \\\\ \\\\ \\\\ \\end{bmatrix}'},
+              {p:'6×1', c:'w', w:'\\begin{bmatrix} \\\\ \\\\ \\\\ \\\\ \\\\ \\end{bmatrix}'},
               {p:'2×2', c:'w', w:'\\begin{bmatrix}&\\\\&\\end{bmatrix}'},
               {p:'2×3', c:'w', w:'\\begin{bmatrix}&&\\\\&&\\end{bmatrix}'},
+              {p:'3×2', c:'w', w:'\\begin{bmatrix}& \\\\& \\\\& \\end{bmatrix}'},
               {p:'3×3', c:'w', w:'\\begin{bmatrix}&&\\\\&&\\\\&&\\end{bmatrix}'},
               {p:'3×4', c:'w', w:'\\begin{bmatrix}&&&\\\\&&&\\\\&&&\\end{bmatrix}'},
               {p:'+Col', c:'m', w:'addColumn'},
@@ -348,16 +376,43 @@ var myMQeditor = (function($) {
         ]
       },
       {
+        p:'Vector',
+        sm: 1,
+        enabled: false,
+        tabcontent: [
+          {
+            flow: 'row',
+            s: 6,
+            contents: [
+              {p:'List-length:', c:' ', w:' '},
+              {p:'2', c:'w', w:'\\begin{bmatrix} \\\\ \\end{bmatrix}'},		
+              {p:'3', c:'w', w:'\\begin{bmatrix} \\\\ \\\\ \\end{bmatrix}'},
+              {p:'4', c:'w', w:'\\begin{bmatrix} \\\\ \\\\ \\\\ \\end{bmatrix}'},
+              {p:'5', c:'w', w:'\\begin{bmatrix} \\\\ \\\\ \\\\ \\\\ \\end{bmatrix}'},
+              {p:'6', c:'w', w:'\\begin{bmatrix} \\\\ \\\\ \\\\ \\\\ \\\\ \\end{bmatrix}'},
+              {p:'+1 to list-length', c:'m', w:'addRow'},
+              {p:'-1 from list-length', c:'m', w:'deleteRow'}
+            ]
+          }
+        ]
+      },
+      {
         p:'Matrix',
         sm: 1,
         enabled: false,
         tabcontent: [
           {
             flow: 'row',
-            s: 4,
+            s: 5,
             contents: [
+	      {p:'2×1', c:'w', w:'\\begin{bmatrix} \\\\ \\end{bmatrix}'},		
+              {p:'3×1', c:'w', w:'\\begin{bmatrix} \\\\ \\\\ \\end{bmatrix}'},
+              {p:'4×1', c:'w', w:'\\begin{bmatrix} \\\\ \\\\ \\\\ \\end{bmatrix}'},
+              {p:'5×1', c:'w', w:'\\begin{bmatrix} \\\\ \\\\ \\\\ \\\\ \\end{bmatrix}'},
+              {p:'6×1', c:'w', w:'\\begin{bmatrix} \\\\ \\\\ \\\\ \\\\ \\\\ \\end{bmatrix}'},
               {p:'2×2', c:'w', w:'\\begin{bmatrix}&\\\\&\\end{bmatrix}'},
               {p:'2×3', c:'w', w:'\\begin{bmatrix}&&\\\\&&\\end{bmatrix}'},
+              {p:'3×2', c:'w', w:'\\begin{bmatrix}& \\\\& \\\\& \\end{bmatrix}'},
               {p:'3×3', c:'w', w:'\\begin{bmatrix}&&\\\\&&\\\\&&\\end{bmatrix}'},
               {p:'3×4', c:'w', w:'\\begin{bmatrix}&&&\\\\&&&\\\\&&&\\end{bmatrix}'},
               {p:'+Col', c:'m', w:'addColumn'},
@@ -497,11 +552,11 @@ var myMQeditor = (function($) {
         }
       }
       if (calcformat.match(/allowplusminus/)) {
-        baselayout.tabs[6].tabcontent[0].contents[17] = {l:'\\pm', pr:'<span class="mq-binary-operator">&plusmn;</span>'};
+        baselayout.tabs[7].tabcontent[0].contents[17] = {l:'\\pm', pr:'<span class="mq-binary-operator">&plusmn;</span>'};
       }
       if (calcformat.match(/inequality/)) {
-        //baselayout.tabs[6].tabcontent[0].contents[8].s = 0.5;
-        //baselayout.tabs[6].tabcontent[0].contents.splice(9,0,  {l:'\\ne', s:0.5, pr:'<span class="mq-binary-operator">&ne;</span>'});
+        //baselayout.tabs[7].tabcontent[0].contents[8].s = 0.5;
+        //baselayout.tabs[7].tabcontent[0].contents.splice(9,0,  {l:'\\ne', s:0.5, pr:'<span class="mq-binary-operator">&ne;</span>'});
         baselayout.tabs[3].p = 'Ineq';
       }
     } else {
@@ -554,6 +609,7 @@ var myMQeditor = (function($) {
       }
     } else if ((qtype.match(/matrix/) || calcformat.match(/matrix/)) && !calcformat.match(/matrixsized/)) {
       baselayout.tabs[5].enabled = true;
+      baselayout.tabs[6].enabled = true;
     } else if (calcformat.match(/set\b/)) {
       baselayout.tabs[0].tabcontent.unshift({
         flow: 'row',
